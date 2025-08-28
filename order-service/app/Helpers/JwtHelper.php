@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Helpers;
+
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+class JwtHelper
+{
+    private static $secretKey = 'your-secret-key-here-change-in-production';
+
+    public static function validateToken($token)
+    {
+        try {
+            $decoded = JWT::decode($token, new Key(self::$secretKey, 'HS256'));
+            return (array) $decoded;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
+    public static function getTokenFromRequest($request)
+    {
+        $authHeader = $request->header('Authorization');
+
+        if (!$authHeader || !str_starts_with($authHeader, 'Bearer ')) {
+            return null;
+        }
+
+        return str_replace('Bearer ', '', $authHeader);
+    }
+
+    public static function getUserFromToken($request)
+    {
+        $token = self::getTokenFromRequest($request);
+
+        if (!$token) {
+            return null;
+        }
+
+        $payload = self::validateToken($token);
+
+        if (!$payload) {
+            return null;
+        }
+
+        return [
+            'id' => $payload['user_id'],
+            'email' => $payload['email']
+        ];
+    }
+}

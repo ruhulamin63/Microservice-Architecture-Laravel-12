@@ -1,0 +1,39 @@
+[
+  {
+    "_id": "ad0162c3-a6ce-4afb-a400-bddf32eb05b3",
+    "colName": "user-services",
+    "created": "2025-08-28T11:53:03.131Z",
+    "sortNum": 10000,
+    "folders": [
+      {
+        "_id": "47871b34-6925-42e8-8def-1f5d81b63ac2",
+        "name": "auth",
+        "containerId": "",
+        "created": "2025-08-28T11:53:19.165Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "358c9d21-ca74-413f-a8fd-6af5eba450ec",
+        "name": "users",
+        "containerId": "",
+        "created": "2025-08-28T11:53:27.820Z",
+        "sortNum": 20000
+      }
+    ]
+  },
+  {
+    "_id": "4a279e4f-c80d-4461-b7dd-cff6e387afbd",
+    "colName": "order-services",
+    "created": "2025-08-28T11:53:11.837Z",
+    "sortNum": 20000,
+    "folders": [
+      {
+        "_id": "646a6b7c-91d3-4071-bac7-1af7a0d0e89d",
+        "name": "order",
+        "containerId": "",
+        "created": "2025-08-28T12:02:24.884Z",
+        "sortNum": 10000
+      }
+    ]
+  }
+]
