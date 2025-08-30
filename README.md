@@ -22,7 +22,10 @@ This project demonstrates a complete microservices architecture using Laravel wi
 ### Prerequisites
 - PHP 8.2+
 - Composer
-- Database (SQLite by default)
+- Database (MySQL by default)
+- **Packages**: `firebase/php-jwt` (^6.11) for JWT token handling
+- **Package install**: `composer require firebase/php-jwt`
+- **Package remove**: `composer remove firebase/php-jwt`
 
 ### Installation & Setup
 
@@ -31,7 +34,7 @@ This project demonstrates a complete microservices architecture using Laravel wi
    # Auth Service
    cd auth-service
    cp .env.example .env
-   composer install
+   composer install  # Installs dependencies including firebase/php-jwt
    php artisan key:generate
    php artisan migrate
 
@@ -247,10 +250,11 @@ APP_PORT=8000  # Adjust per service
 ```
 
 ### JWT Configuration
-Update the secret key in all services:
+The system uses `firebase/php-jwt` package for token generation and validation. Update the secret key in all services:
 ```php
 private static $secretKey = 'your-production-secret-key';
 ```
+Or set `JWT_SECRET` in `.env` files for better security.
 
 ## 🚀 Scaling & Production
 
