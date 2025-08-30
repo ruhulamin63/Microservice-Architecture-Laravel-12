@@ -7,18 +7,22 @@ use Illuminate\Support\Facades\Http;
 
 class GatewayController extends Controller
 {
-    private const SERVICES = [
-        'auth' => 'http://localhost:8000',
-        'users' => 'http://localhost:8001',
-        'orders' => 'http://localhost:8002',
-    ];
+    public function __construct()
+    {
+        $this->services = config('services.microservices');
+    }
 
     /**
      * Proxy authentication requests to auth service
      */
     public function auth(Request $request, $endpoint = null)
     {
-        return $this->proxyRequest($request, self::SERVICES['auth'], 'api/' . $endpoint);
+        // Extract endpoint from path if not provided
+        // if (!$endpoint) {
+        //     $path = $request->path();
+        //     $endpoint = str_replace('api/auth/', '', $path);
+        // }
+        return $this->proxyRequest($request, $this->services['auth'], $endpoint);
     }
 
     /**
@@ -26,7 +30,7 @@ class GatewayController extends Controller
      */
     public function users(Request $request, $endpoint = null)
     {
-        return $this->proxyRequest($request, self::SERVICES['users'], 'api/users/' . $endpoint);
+        return $this->proxyRequest($request, $this->services['users'], 'api/users/' . $endpoint);
     }
 
     /**
@@ -34,7 +38,7 @@ class GatewayController extends Controller
      */
     public function orders(Request $request, $endpoint = null)
     {
-        return $this->proxyRequest($request, self::SERVICES['orders'], 'api/orders/' . $endpoint);
+        return $this->proxyRequest($request, $this->services['orders'], 'api/orders/' . $endpoint);
     }
 
     /**
@@ -44,7 +48,7 @@ class GatewayController extends Controller
     {
         $health = [];
 
-        foreach (self::SERVICES as $name => $url) {
+        foreach ($this->services as $name => $url) {
             try {
                 $response = Http::timeout(3)->get($url . '/up');
                 $health[$name] = [
@@ -96,7 +100,6 @@ class GatewayController extends Controller
 
             // Get request data
             $data = $request->all();
-            // dd($httpClient, $data);
 
             // Make the request based on HTTP method
             switch ($request->method()) {

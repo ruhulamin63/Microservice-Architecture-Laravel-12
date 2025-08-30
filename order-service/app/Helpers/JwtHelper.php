@@ -7,12 +7,15 @@ use Firebase\JWT\Key;
 
 class JwtHelper
 {
-    private static $secretKey = 'your-secret-key-here-change-in-production';
+    private static function getSecretKey()
+    {
+        return env('JWT_SECRET', 'your-secret-key-here-change-in-production');
+    }
 
     public static function validateToken($token)
     {
         try {
-            $decoded = JWT::decode($token, new Key(self::$secretKey, 'HS256'));
+            $decoded = JWT::decode($token, new Key(self::getSecretKey(), 'HS256'));
             return (array) $decoded;
         } catch (\Exception $e) {
             return false;

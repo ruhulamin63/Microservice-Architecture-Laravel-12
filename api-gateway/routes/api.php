@@ -8,10 +8,8 @@ use App\Http\Controllers\GatewayController;
 Route::get('/health', [GatewayController::class, 'health']);
 
 // Authentication routes
-Route::post('auth/register', [GatewayController::class, 'auth']);
-Route::post('auth/login', [GatewayController::class, 'auth']);
-Route::post('auth/validate-token', [GatewayController::class, 'auth']);
-Route::get('auth/profile', [GatewayController::class, 'auth']);
+Route::post('auth/{endpoint}', [GatewayController::class, 'auth'])->where('endpoint', 'register|login|validate-token');
+Route::get('auth/{endpoint}', [GatewayController::class, 'auth'])->where('endpoint', 'profile');
 
 // User routes
 Route::get('users', [GatewayController::class, 'users']);

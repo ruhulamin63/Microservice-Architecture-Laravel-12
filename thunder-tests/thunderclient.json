@@ -156,7 +156,7 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2025-08-30T05:54:29.376Z",
-    "modified": "2025-08-30T06:23:55.617Z",
+    "modified": "2025-08-30T07:02:10.868Z",
     "headers": [
       {
         "name": "Accept",
@@ -168,6 +168,53 @@
       "type": "json",
       "raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"password123\"\r\n}",
       "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "44194172-a332-477b-8c78-5cba01bcbf08",
+    "colId": "1b5590a3-c211-48d0-8528-bc5166e11277",
+    "containerId": "d7826cef-ec2c-4e24-9951-95dec60d269b",
+    "name": "login",
+    "url": "{{apiGatewayBaseUrl}}/auth/login",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2025-08-30T07:40:05.686Z",
+    "modified": "2025-08-30T07:58:26.985Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"password123\"\r\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "1c6e7cc1-f7b9-4ee9-9610-a90a18edb2c7",
+    "colId": "1b5590a3-c211-48d0-8528-bc5166e11277",
+    "containerId": "d7826cef-ec2c-4e24-9951-95dec60d269b",
+    "name": "validate-token",
+    "url": "{{apiGatewayBaseUrl}}/auth/validate-token",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2025-08-30T07:41:26.087Z",
+    "modified": "2025-08-30T07:57:34.002Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      }
+    ],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "{{token}}"
     },
     "tests": []
   }

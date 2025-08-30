@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'microservices' => [
+        'auth' => env('AUTH_SERVICE_URL'),
+        'users' => env('USERS_SERVICE_URL'),
+        'orders' => env('ORDERS_SERVICE_URL'),
+    ],
 ];
