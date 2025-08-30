@@ -171,19 +171,19 @@ API Gateway → All Services (proxy requests)
 
 ## 📊 API Endpoints
 
-### Authentication (Port 8002)
+### Authentication (Port 8000)
 - `POST /api/register` - User registration
 - `POST /api/login` - User login
 - `POST /api/validate-token` - Token validation
 - `GET /api/profile` - Get user profile
 
-### User Management (Port 8000)
+### User Management (Port 8001)
 - `GET /api/users` - List users (authenticated)
 - `GET /api/users/{id}` - Get user (authenticated)
 - `PUT /api/users/{id}` - Update user (authenticated)
 - `DELETE /api/users/{id}` - Delete user (authenticated)
 
-### Order Management (Port 8001)
+### Order Management (Port 8002)
 - `GET /api/orders` - List user orders (authenticated)
 - `POST /api/orders` - Create order (authenticated)
 - `GET /api/orders/{id}` - Get order (authenticated)
