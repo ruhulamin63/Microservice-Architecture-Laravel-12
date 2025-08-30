@@ -84,5 +84,91 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "15f29c37-a0aa-4e5b-9edf-0ef0f0b2a3dc",
+    "colId": "9705157f-a044-4c8c-94d0-b566b3e0a4bc",
+    "containerId": "972b026a-305c-4e60-abe4-a10b422f8594",
+    "name": "index",
+    "url": "http://127.0.0.1:8000/api/users",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2025-08-30T05:39:06.812Z",
+    "modified": "2025-08-30T05:39:06.812Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "f597b6e0-2cc0-4c33-bc3f-db435c4e2ade",
+    "colId": "9705157f-a044-4c8c-94d0-b566b3e0a4bc",
+    "containerId": "972b026a-305c-4e60-abe4-a10b422f8594",
+    "name": "store",
+    "url": "127.0.0.1:8000/api/users",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2025-08-30T05:39:06.813Z",
+    "modified": "2025-08-30T05:39:06.813Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john@example.com\",\r\n    \"password\": \"password123\"\r\n  }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "3dce18c7-5c99-4344-9401-08d31530e45a",
+    "colId": "1b5590a3-c211-48d0-8528-bc5166e11277",
+    "containerId": "",
+    "name": "api-health-check",
+    "url": "{{apiGatewayBaseUrl}}/health",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2025-08-30T05:40:19.451Z",
+    "modified": "2025-08-30T05:47:58.326Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      }
+    ],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "4d23c141-1659-4d26-a4e2-3e82dcdf3535",
+    "colId": "1b5590a3-c211-48d0-8528-bc5166e11277",
+    "containerId": "d7826cef-ec2c-4e24-9951-95dec60d269b",
+    "name": "registration",
+    "url": "{{apiGatewayBaseUrl}}/auth/register",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2025-08-30T05:54:29.376Z",
+    "modified": "2025-08-30T06:23:55.617Z",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json"
+      }
+    ],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"password123\"\r\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Http;
 class GatewayController extends Controller
 {
     private const SERVICES = [
-        'auth' => 'http://localhost:8002',
-        'users' => 'http://localhost:8000',
-        'orders' => 'http://localhost:8001',
+        'auth' => 'http://localhost:8000',
+        'users' => 'http://localhost:8001',
+        'orders' => 'http://localhost:8002',
     ];
 
     /**
@@ -75,9 +75,10 @@ class GatewayController extends Controller
         try {
             // Build the target URL
             $targetUrl = $serviceUrl . '/' . $endpoint;
-
+            
             // Remove any trailing slash from endpoint if it exists
             $targetUrl = rtrim($targetUrl, '/');
+            // dd($targetUrl);
 
             // Prepare headers
             $headers = [
@@ -95,6 +96,7 @@ class GatewayController extends Controller
 
             // Get request data
             $data = $request->all();
+            // dd($httpClient, $data);
 
             // Make the request based on HTTP method
             switch ($request->method()) {

@@ -59,13 +59,13 @@ This project demonstrates a complete microservices architecture using Laravel wi
 2. **Start All Services**:
    ```bash
    # Terminal 1 - Auth Service
-   cd auth-service && php artisan serve --port=8002
+   cd auth-service && php artisan serve --port=8000
 
    # Terminal 2 - User Service
-   cd user-service && php artisan serve --port=8000
+   cd user-service && php artisan serve --port=8001
 
    # Terminal 3 - Order Service
-   cd order-service && php artisan serve --port=8001
+   cd order-service && php artisan serve --port=8002
 
    # Terminal 4 - API Gateway
    cd api-gateway && php artisan serve --port=8003

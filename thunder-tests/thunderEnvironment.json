@@ -1,1 +1,43 @@
-[]
+[
+  {
+    "_id": "a19863ef-4d7e-42cf-9b62-3dd2167a3680",
+    "name": "(Local Env)",
+    "default": false,
+    "global": true,
+    "local": true,
+    "sortNum": -1,
+    "created": "2025-08-30T05:41:15.328Z",
+    "modified": "2025-08-30T05:41:15.328Z",
+    "data": []
+  },
+  {
+    "_id": "9d51d57e-c7d7-48a9-8b98-9116237c77c7",
+    "name": "local",
+    "default": true,
+    "sortNum": 10000,
+    "created": "2025-08-30T05:41:37.344Z",
+    "modified": "2025-08-30T05:41:37.344Z",
+    "data": [
+      {
+        "name": "apiGatewayBaseUrl",
+        "value": "http://127.0.0.1:8003/api"
+      },
+      {
+        "name": "authBaseUrl",
+        "value": "http://127.0.0.1:8000/api"
+      },
+      {
+        "name": "userBaseUrl",
+        "value": "http://127.0.0.1:8001/api"
+      },
+      {
+        "name": "orderBaseUrl",
+        "value": "http://127.0.0.1:8002/api"
+      },
+      {
+        "name": "token",
+        "value": ""
+      }
+    ]
+  }
+]

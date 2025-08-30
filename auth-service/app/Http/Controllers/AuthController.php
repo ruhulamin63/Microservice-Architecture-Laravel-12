@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Http;
 use App\Models\User;
 use App\Helpers\JwtHelper;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
@@ -15,21 +16,33 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
+        // dd($request->all());
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:6',
         ]);
 
-        $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-        ]);
+        DB::beginTransaction();
+        try {
+            $user = User::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => Hash::make($validated['password']),
+            ]);
+            DB::commit();
+            
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'message' => 'User registration failed',
+                'error' => $e->getMessage()
+            ], 500);
+        }
 
         // Sync with user-service
         try {
-            Http::post('http://localhost:8000/api/users', [
+            Http::post('http://localhost:8001/api/users', [
                 'name' => $validated['name'],
                 'email' => $validated['email'],
                 'password' => $validated['password'],
